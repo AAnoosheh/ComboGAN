@@ -49,6 +49,8 @@ cd ComboGAN
 ### ComboGAN training
 Our ready datasets can be downloaded using `./datasets/download_dataset.sh <dataset_name>`.
 
+A pretrained model for the 14-painters dataset can be found [HERE](https://www.dropbox.com/s/t8s6x0bu52d73s0/paint14_pretrained.zip?dl=0). Place under `./checkpoints/` and test using the instructions below, with args `--name paint14_pretrained --dataroot ./datasets/painters_14 --n_domains 14 --which_epoch 1150`.
+
 Example running scripts can be found in the `scripts` directory.
 
 - Train a model:
@@ -62,7 +64,7 @@ python train.py --continue_train --which_epoch <checkpoint_number_to_load> --nam
 ```
 - Test the model:
 ```
-python test.py --phase test --name <experiment_name> --dataroot ./datasets/<your_dataset> --n_domains <N> --which_epoch <checkpoint_number_to_load>
+python test.py --phase test --name <experiment_name> --dataroot ./datasets/<your_dataset> --n_domains <N> --which_epoch <checkpoint_number_to_load> --serial_test
 ```
 The test results will be saved to a html file here: `./results/<experiment_name>/<epoch_number>/index.html`.
 
