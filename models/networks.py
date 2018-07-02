@@ -251,7 +251,7 @@ class NLayerDiscriminator(nn.Module):
         super(NLayerDiscriminator, self).__init__()
         self.gpu_ids = gpu_ids
         self.blur_fn = blur_fn
-        self.gray_fn = lambda x: (.2126*x[:,0,:,:] + .7152*x[:,1,:,:] + .0722*x[:,2,:,:])[:,None,:,:]
+        self.gray_fn = lambda x: (.299*x[:,0,:,:] + .587*x[:,1,:,:] + .114*x[:,2,:,:]).unsqueeze_(1)
 
         self.model_gray = self.model(1, ndf, n_layers, norm_layer)
         self.model_rgb = self.model(input_nc, ndf, n_layers, norm_layer)
